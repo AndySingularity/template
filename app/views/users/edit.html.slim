@@ -1,0 +1,38 @@
+div.container
+	div.row
+
+		div.col-md-6 style="padding-left"
+			= image_tag @user.avatar.url, class: 'img-rounded img-responsive'
+
+
+
+
+		div.col-md-4.center
+			blockquote
+				p
+					= @user.username
+				p
+					span.glyphicon.glyphicon-envelope
+					= @user.email
+
+				= simple_form_for :user, url: {controller: "users", action: "update"}, method: 'put' do |f|
+					div.form-froup
+						label.control-label for="title"
+							| Заголовок блога
+						= f.text_area :title, as: :text , class: 'form-control', placeholder: current_user.title, rows: '1', id: 'title'
+					div.form-froup
+						label.control-label for="about"
+							| Описание
+						= f.text_area :about, as: :text , class: 'form-control', placeholder: current_user.about, rows: '2', id: 'about'
+					div.form-froup
+						label.control-label for="bio"
+							| Биография
+						= f.text_area :bio, as: :text , class: 'form-control', placeholder: current_user.bio, rows: '2', id: 'bio'
+
+					div.form-group
+						label.control-label for="avatar"
+							| Аватарка
+						= f.file_field :avatar, class: 'form-control', id: 'avatar'
+					br
+					div.form-group
+						= f.submit "Обновить"

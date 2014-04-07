@@ -1,0 +1,12 @@
+header.header
+	hgroup.pull-left
+		h1.site-title
+			= link_to 'BlogSystem', root_path
+	- if user_signed_in?
+		div.btn-group.pull-right
+			div.btn.btn-success#togglesidebar
+				| Настройки
+	- else
+		div.btn.btn-primary.pull-right#togglesidebar
+			| Авторизация
+br
